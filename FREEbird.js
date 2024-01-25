@@ -5,17 +5,17 @@ let boardHeight = 640;
 let context;
 
 //bird 
-let birdWidth = 85; //width/ height ratio = 408/228 = 17/12
+let birdWidth = 85; //width/height ratio = 17/12
 let birdHeight = 80; 
-let birdX = boardWidth/8;
-let birdY = boardHeight/2;
+let birdX = boardWidth / 8;
+let birdY = boardHeight / 2;
 let birdImg;
 
 let bird = {
-    X : birdX,
-    Y : birdY,
-    width : birdWidth,
-    height : birdHeight
+    X: birdX,
+    Y: birdY,
+    width: birdWidth,
+    height: birdHeight
 }
 
 // pipes
@@ -47,7 +47,7 @@ window.onload = function() {
 
     // Load Bird Image
     birdImg = new Image();
-    birdImg.onload = function(){
+    birdImg.onload = function() {
        context.drawImage(birdImg, bird.X, bird.Y, bird.width, bird.height);
     }
     birdImg.src = "./onderwerp.png";
@@ -64,7 +64,7 @@ window.onload = function() {
     bottomPipeImg.src = "./bottompipe.png";
 
     // Set up event listeners
-    setInterval(placePipes, 1500); // every 1.5seconds
+    setInterval(placePipes, 1500); // every 1.5 seconds
     document.addEventListener("keydown", moveBird);
 }
 
@@ -99,24 +99,23 @@ function update() {
     // bird
     velocityY += gravity;
     bird.Y += velocityY;
-    context.drawImage(birdImg, bird.X, bird.Y, birdWidth, birdHeight);
+    context.drawImage(birdImg, bird.X, bird.Y, bird.width, bird.height);
     if (bird.Y > board.height){
         gameOver = true;
     }
 
     // Check for game over
     if (gameOver) {
-        // Implement game over logic here
-        console.log("Game Over!");
+        gameOverLogic();
     }
 
     //score 
-    context.fillStyle = "white"; // Fill style should be 'fillStyle', not 'fillstyle'
-    context.font = "45px sans-serif"; // 'sans-serif' should be 'sans-serif', not 'sans-seriff'
-    context.fillText(score, 5, 45); // 'fillText', not 'filltext'
+    context.fillStyle = "white";
+    context.font = "45px sans-serif";
+    context.fillText(score, 5, 45);
 
     if (gameOver){
-        context.fillText("GAME OVER", 5, 90); // 'fillText', not 'filltext'
+        context.fillText("GAME OVER", 5, 90);
     }
 }
 
@@ -157,8 +156,8 @@ function moveBird(e){
 
         //reset game
         if(gameOver){
-            bird.Y = birdY; // 'Y', not 'y'
-            pipeArray =[]; // 'pipeArray', not 'pipes'
+            bird.Y = birdY;
+            pipeArray = [];
             score = 0;
             gameOver = false;
         }
@@ -170,4 +169,9 @@ function detectCollision(a, b){
            a.X + a.width > b.x  &&
            a.Y < b.y + b.height &&
            a.Y + a.height > b.y;
+}
+
+function gameOverLogic() {
+    console.log("Game Over!");
+    // Add game over logic here
 }
