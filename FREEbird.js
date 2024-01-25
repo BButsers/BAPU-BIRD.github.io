@@ -45,12 +45,20 @@ window.onload = function() {
     board.width = boardWidth;
     context = board.getContext("2d"); //used for drawing on the board
 
-    //load images
+    window.onload = function() {
+    // Board setup
+    board = document.getElementById("board");
+    board.height = BOARD_HEIGHT;
+    board.width = BOARD_WIDTH;
+    context = board.getContext("2d");
+
+    // Load Bird Image
     birdImg = new Image();
-    birdImg.src = "./onderwerp.png";
     birdImg.onload = function(){
-       context.drawImage(birdImg, bird.X, bird.Y, birdWidth, birdHeight);
+       context.drawImage(birdImg, birdX, birdY, BIRD_WIDTH, BIRD_HEIGHT);
     }
+    birdImg.src = "./onderwerp.png";
+
 
     topPipeImg = new Image();
     topPipeImg.src = "./toppipe.png";
