@@ -48,7 +48,7 @@ window.onload = function() {
     // Load Bird Image
     birdImg = new Image();
     birdImg.onload = function() {
-       context.drawImage(birdImg, bird.X, bird.Y, bird.width, bird.height);
+       context.drawImage(birdImg, bird.x, bird.y, bird.width, bird.height);
     }
     birdImg.src = "./grandfather.png";
 
@@ -81,7 +81,7 @@ function update() {
         pipe.x += velocityX;
         context.drawImage(pipe.img, pipe.x, pipe.y, pipe.width, pipe.height);
 
-        if (!pipe.passed && bird.X > pipe.x + pipe.width) {
+        if (!pipe.passed && bird.x > pipe.x + pipe.width) {
             score += 0.5;
             pipe.passed = true;
         }
@@ -98,9 +98,9 @@ function update() {
 
     // bird
     velocityY += gravity;
-    bird.Y += velocityY;
-    context.drawImage(birdImg, bird.X, bird.Y, bird.width, bird.height);
-    if (bird.Y > board.height){
+    bird.y += velocityY;
+    context.drawImage(birdImg, bird.x, bird.y, bird.width, bird.height);
+    if (bird.y > board.height){
         gameOver = true;
     }
 
@@ -156,7 +156,7 @@ function moveBird(e){
 
         //reset game
         if(gameOver){
-            bird.Y = birdY;
+            bird.y = birdY;
             pipeArray = [];
             score = 0;
             gameOver = false;
@@ -165,10 +165,10 @@ function moveBird(e){
 }
 
 function detectCollision(a, b){
-    return a.X < b.x + b.width &&
-           a.X + a.width > b.x  &&
-           a.Y < b.y + b.height &&
-           a.Y + a.height > b.y;
+    return a.x < b.x + b.width &&
+           a.x + a.width > b.x  &&
+           a.y < b.y + b.height &&
+           a.y + a.height > b.y;
 }
 
 function gameOverLogic() {
