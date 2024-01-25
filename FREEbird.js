@@ -43,30 +43,27 @@ window.onload = function() {
     board = document.getElementById("board");
     board.height = boardHeight;
     board.width = boardWidth;
-    context = board.getContext("2d"); //used for drawing on the board
-
-    window.onload = function() {
-    // Board setup
-    board = document.getElementById("board");
-    board.height = BOARD_HEIGHT;
-    board.width = BOARD_WIDTH;
     context = board.getContext("2d");
 
     // Load Bird Image
     birdImg = new Image();
     birdImg.onload = function(){
-       context.drawImage(birdImg, birdX, birdY, BIRD_WIDTH, BIRD_HEIGHT);
+       context.drawImage(birdImg, bird.X, bird.Y, bird.width, bird.height);
     }
     birdImg.src = "./onderwerp.png";
 
-
+    // Load Pipe Images
     topPipeImg = new Image();
+    topPipeImg.onload = function() {
+        // Now that the top pipe image has loaded, start the game loop
+        requestAnimationFrame(update);
+    }
     topPipeImg.src = "./toppipe.png";
 
     bottomPipeImg = new Image();
     bottomPipeImg.src = "./bottompipe.png";
 
-    requestAnimationFrame(update);
+    // Set up event listeners
     setInterval(placePipes, 1500); // every 1.5seconds
     document.addEventListener("keydown", moveBird);
 }
