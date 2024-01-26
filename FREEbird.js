@@ -180,10 +180,11 @@ function touchHandler(event) {
 }
 
 function detectCollision(a, b){
-    return a.x < b.x + b.width &&
-           a.x + a.width > b.x  &&
-           a.y < b.y + b.height &&
-           a.y + a.height > b.y;
+    // Adjusting the coordinates for closer collision detection
+    return a.x + a.width * 0.3 < b.x + b.width * 0.7 &&
+           a.x + a.width * 0.7 > b.x + b.width * 0.3 &&
+           a.y + a.height * 0.3 < b.y + b.height * 0.7 &&
+           a.y + a.height * 0.7 > b.y + b.height * 0.3;
 }
 
 function gameOverLogic() {
