@@ -20,8 +20,8 @@ let bird = {
 
 // pipes
 let pipeArray = [];
-let pipeWidth = 100;
-let pipeHeight = 450;
+let pipeWidth = 125;
+let pipeHeight = 435;
 let pipeX = boardWidth;
 let pipeY = 0;
 
