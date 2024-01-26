@@ -150,7 +150,7 @@ function placePipes() {
     pipeArray.push(bottomPipe);
 
     // Increase the distance between consecutive pipes
-    pipeX += 225; // Adjust this value to change the distance between pipes
+    pipeX += 200; // Adjust this value to change the distance between pipes
 }
 
 function moveBird(e){
