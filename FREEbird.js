@@ -66,6 +66,7 @@ window.onload = function() {
     // Set up event listeners
     setInterval(placePipes, 1500); // every 1.5 seconds
     document.addEventListener("keydown", moveBird);
+    board.addEventListener("touchstart", touchHandler);
 }
 
 function update() {
@@ -161,6 +162,20 @@ function moveBird(e){
             score = 0;
             gameOver = false;
         }
+    }
+}
+
+function touchHandler(event) {
+    event.preventDefault();
+    //jump
+    velocityY = -6;
+
+    //reset game
+    if(gameOver){
+        bird.y = birdY;
+        pipeArray = [];
+        score = 0;
+        gameOver = false;
     }
 }
 
