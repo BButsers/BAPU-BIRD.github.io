@@ -5,8 +5,8 @@ let boardHeight = 640;
 let context;
 
 //bird 
-let birdWidth = 73; //width/height ratio = 17/12
-let birdHeight = 53; 
+let birdWidth = 93; //width/height ratio = 17/12
+let birdHeight = 73; 
 let birdX = boardWidth / 8;
 let birdY = boardHeight / 2;
 let birdImg;
@@ -21,7 +21,7 @@ let bird = {
 // pipes
 let pipeArray = [];
 let pipeWidth = 115;
-let pipeHeight = 435;
+let pipeHeight = 400;
 let pipeX = boardWidth;
 let pipeY = 0;
 
