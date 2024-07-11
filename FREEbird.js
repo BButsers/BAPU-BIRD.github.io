@@ -20,8 +20,8 @@ let bird = {
 
 // pipes
 let pipeArray = [];
-let pipeWidth = 200;
-let pipeHeight = 900;
+let pipeWidth = 150;
+let pipeHeight = 700;
 let pipeX = boardWidth;
 let pipeY = 0;
 
@@ -137,7 +137,7 @@ function placePipes() {
 
     pipeArray.push(topPipe);
 
-    const openingspace = 200;
+    const openingspace = 150;
 
     let bottomPipe = {
         img: bottomPipeImg,
