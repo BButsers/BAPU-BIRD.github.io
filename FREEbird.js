@@ -88,6 +88,7 @@ function update() {
 
         if (detectCollision(bird, pipe)){
             gameOver = true;
+            break;
         }
     }
 
@@ -100,7 +101,7 @@ function update() {
     velocityY += gravity;
     bird.y += velocityY;
     context.drawImage(birdImg, bird.x, bird.y, bird.width, bird.height);
-    if (bird.y > board.height){
+    if (bird.y > board.height || bird.y < 0){
         gameOver = true;
     }
 
@@ -136,7 +137,7 @@ function placePipes() {
 
     pipeArray.push(topPipe);
 
-    const openingspace = 100;
+    const openingspace = 150;
 
     let bottomPipe = {
         img: bottomPipeImg,
@@ -147,9 +148,6 @@ function placePipes() {
         passed: false,
     }
     pipeArray.push(bottomPipe);
-
-    // Increase the distance between consecutive pipes
-    pipeX += 200; // Adjust this value to change the distance between pipes
 }
 
 function moveBird(e){
@@ -159,10 +157,7 @@ function moveBird(e){
 
         // reset game
         if(gameOver){
-            bird.y = birdY;
-            pipeArray = [];
-            score = 0;
-            gameOver = false;
+            resetGame();
         }
     }
 }
@@ -174,22 +169,26 @@ function touchHandler(event) {
 
     // reset game
     if(gameOver){
-        bird.y = birdY;
-        pipeArray = [];
-        score = 0;
-        gameOver = false;
+        resetGame();
     }
 }
 
 function detectCollision(a, b){
-    // Adjusting the coordinates for closer collision detection
-    return a.x + a.width * 0.3 < b.x + b.width * 0.7 &&
-           a.x + a.width * 0.7 > b.x + b.width * 0.3 &&
-           a.y + a.height * 0.3 < b.y + b.height * 0.7 &&
-           a.y + a.height * 0.7 > b.y + b.height * 0.3;
+    return a.x < b.x + b.width &&
+           a.x + a.width > b.x &&
+           a.y < b.y + b.height &&
+           a.y + a.height > b.y;
+}
+
+function resetGame() {
+    bird.y = birdY;
+    pipeArray = [];
+    score = 0;
+    velocityY = 0;
+    gameOver = false;
 }
 
 function gameOverLogic() {
     console.log("Game Over!");
-    // Add game over logic here
+    // Additional game over logic can be added here
 }
