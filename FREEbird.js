@@ -1,12 +1,11 @@
-//board
 let board;
 let boardWidth = 360;
 let boardHeight = 640;
 let context;
 
-//bird 
-let birdWidth = 93; //width/height ratio = 17/12
-let birdHeight = 73; 
+// bird
+let birdWidth = 51; // width/height ratio = 17/12 (adjusted size)
+let birdHeight = 36; 
 let birdX = boardWidth / 8;
 let birdY = boardHeight / 2;
 let birdImg;
@@ -20,8 +19,8 @@ let bird = {
 
 // pipes
 let pipeArray = [];
-let pipeWidth = 140;
-let pipeHeight = 340;
+let pipeWidth = 60; // adjusted for better gameplay experience
+let pipeHeight = 500; // adjusted for better gameplay experience
 let pipeX = boardWidth;
 let pipeY = 0;
 
@@ -36,7 +35,7 @@ let gravity = 0.4;
 // game over
 let gameOver = false;
 
-//score 
+// score
 let score = 0;
 
 window.onload = function() {
@@ -92,7 +91,7 @@ function update() {
         }
     }
 
-    //clear pipes
+    // clear pipes
     while(pipeArray.length > 0 && pipeArray[0].x < -pipeWidth) {
         pipeArray.shift();
     }
@@ -110,7 +109,7 @@ function update() {
         gameOverLogic();
     }
 
-    //score 
+    // score
     context.fillStyle = "white";
     context.font = "45px sans-serif";
     context.fillText(score, 5, 45);
@@ -155,10 +154,10 @@ function placePipes() {
 
 function moveBird(e){
     if (e.code == "Space" || e.code == "ArrowUp" || e.code == "KeyX"){
-        //jump
+        // jump
         velocityY = -6;
 
-        //reset game
+        // reset game
         if(gameOver){
             bird.y = birdY;
             pipeArray = [];
@@ -170,10 +169,10 @@ function moveBird(e){
 
 function touchHandler(event) {
     event.preventDefault();
-    //jump
+    // jump
     velocityY = -6;
 
-    //reset game
+    // reset game
     if(gameOver){
         bird.y = birdY;
         pipeArray = [];
