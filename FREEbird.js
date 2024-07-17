@@ -137,7 +137,7 @@ function placePipes() {
 
     pipeArray.push(topPipe);
 
-    const openingspace = 300;
+    const openingspace = 200;
 
     let bottomPipe = {
         img: bottomPipeImg,
