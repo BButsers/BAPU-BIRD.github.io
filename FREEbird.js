@@ -125,8 +125,8 @@ function placePipes() {
         return;
     }
 
-    // Randomize the opening space size between 100 and 200 pixels
-    let openingSpace = 100 + Math.random() * 100;
+    // Randomize the opening space size between 80 and 150 pixels
+    let openingSpace = 80 + Math.random() * 70;
 
     // Calculate the minimum and maximum Y positions for the opening
     let minOpeningY = boardHeight / 4;
@@ -159,6 +159,7 @@ function placePipes() {
     pipeArray.push(topPipe);
     pipeArray.push(bottomPipe);
 }
+
 
 
 function moveBird(e){
