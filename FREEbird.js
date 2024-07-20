@@ -124,12 +124,17 @@ function placePipes() {
     if(gameOver){
         return;
     }
-    let randompipeY = pipeY - pipeHeight / 4 - Math.random() * (pipeHeight / 2);
+    
+    let openingSpace = 200; // space between top and bottom pipes
+    let minOpeningY = boardHeight / 4;
+    let maxOpeningY = boardHeight - minOpeningY - openingSpace;
+
+    let randomOpeningY = minOpeningY + Math.random() * (maxOpeningY - minOpeningY);
 
     let topPipe = {
         img: topPipeImg,
         x: pipeX,
-        y: randompipeY,
+        y: randomOpeningY - pipeHeight,
         width: pipeWidth,
         height: pipeHeight,
         passed: false
@@ -137,12 +142,10 @@ function placePipes() {
 
     pipeArray.push(topPipe);
 
-    const openingspace = 200;
-
     let bottomPipe = {
         img: bottomPipeImg,
         x: pipeX,
-        y: randompipeY + pipeHeight + openingspace,
+        y: randomOpeningY + openingSpace,
         width: pipeWidth,
         height: pipeHeight,
         passed: false,
