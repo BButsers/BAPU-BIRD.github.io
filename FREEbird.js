@@ -125,7 +125,7 @@ function placePipes() {
         return;
     }
     
-    let openingSpace = 200; // space between top and bottom pipes
+    let openingSpace = 160; // 20% smaller than the original 200
     let minOpeningY = boardHeight / 4;
     let maxOpeningY = boardHeight - minOpeningY - openingSpace;
 
